@@ -28,12 +28,13 @@ window.onscroll = function () {
   myFunction();
 };
 
-let sticky = nav.offsetTop;
+let sticky = navContainer.offsetTop;
 
 function myFunction() {
   if (window.pageYOffset > sticky) {
     nav.classList.add("stick");
   } else {
+    nav.classList.add("remove-sticky");
     nav.classList.remove("stick");
   }
 }

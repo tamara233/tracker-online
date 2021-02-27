@@ -157,10 +157,10 @@ li {
 }
 @keyframes zoomout {
   0% {
-    transform: scale(1);
+    transform: scale(0.8);
   }
   100% {
-    transform: scale(0.5);
+    transform: scale(0.4);
   }
 }
 @keyframes multi {
@@ -187,18 +187,35 @@ li {
     transform: scale(1);
   }
 }
-/* @keyframes scale {
+@keyframes smoothScroll {
   0% {
-    opacity: 1;
-    transform: scale(1);
-    transform-origin: center center;
+    transform: translateY(-40px);
   }
   100% {
-    transform: scale(5);
-    opacity: 0;
-    transform-origin: center center;
+    transform: translateY(0px);
   }
-} */
+}
+
+@keyframes removeHeader {
+  0% {
+    transform: translateY(40px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotatey(0deg);
+  }
+  50% {
+    transform: rotatey(360deg);
+  }
+
+  100% {
+    transform: rotateY(0deg);
+  }
+}
 
 /* * {
   background: #000 !important;
@@ -495,14 +512,7 @@ p {
 .overlay--content > .flex {
   flex-direction: column;
 }
-/* .users-animate {
-  animation: slide 5s ease forwards;
-  transition: all 15s ease-in;
-} */
-/* .animate-section {
-  animation: slide 5s ease forwards;
-  transition: all 15s ease-in;
-} */
+
 /* Sticky nav */
 
 .sticky {
@@ -512,6 +522,7 @@ p {
   opacity: 0.94;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .sticky a {
   color: #f6f6f6;
@@ -532,13 +543,24 @@ p {
   align-items: center;
   justify-content: space-between;
 }
-.stick {
+
+nav {
+  position: relative;
+  transition: position 0.3s ease;
+}
+nav.stick {
   position: fixed;
   top: 0;
-  background-color: var(--secondary);
+  animation: smoothScroll 200ms forwards;
+}
+.remove-sticky {
+  animation: removeHeader 300ms forwards;
 }
 .wrapper {
   width: 100%;
+}
+.animate-to {
+  justify-content: center;
 }
 
 .wrapper svg {
@@ -652,8 +674,8 @@ p {
 /* Image zoom out */
 
 .img--animation {
-  width: 100vw;
   height: 50vh;
+  margin: 0 auto;
   animation: zoomout 10s ease infinite;
   transition: all 0.2s ease-in-out;
 }
@@ -975,6 +997,7 @@ p {
 .single--item > img {
   width: 70%;
   margin: 4rem auto;
+  animation: rotate 10s linear infinite;
 }
 .single--item > * {
   padding: 2rem 0;
