@@ -1,15 +1,12 @@
 ///////////////////////////////////////
 // Scrolling events
-// get scroll coords
+
 const section1 = document.getElementById("image-over1");
 const section2 = document.getElementById("users");
 
 const sectionToZoom = document.getElementById("banner");
 const sectionCoords = sectionToZoom.getBoundingClientRect();
 const sectionTop = Math.ceil(sectionCoords.top + window.pageYOffset);
-
-// const section2Coords = section2.getBoundingClientRect();
-// const section2Top = Math.ceil(section2Coords.top + window.pageYOffset);
 
 // On scroll add overlay
 document.addEventListener("scroll", () => {
